@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Netrunner Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Fuentes servidas localmente: sin dependencia de Google CDN -->
+    {% load static %}
+    <link rel="preload" href="{% static 'fonts/space-grotesk.woff2' %}" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="{% static 'fonts/material-symbols-outlined.woff2' %}" as="font" type="font/woff2" crossorigin />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00f3ff",
+                        "accent-yellow": "#fcee0a",
+                        "neon-magenta": "#ff00ff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0a0a0a",
+                        "surface-dark": "#161616",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body
+    class="bg-background-dark font-display text-slate-100 overflow-x-hidden selection:bg-primary selection:text-black">
+    <div class="fixed inset-0 scanlines z-50 opacity-20 pointer-events-none"></div>
+    <div class="fixed inset-0 tech-grid pointer-events-none"></div>
+
+    <div class="relative flex h-auto min-h-screen w-full flex-col z-10">
+        <!-- Navigation -->
+        <header
+            class="flex items-center justify-between border-b-2 border-primary/30 px-6 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-40">
+            <div class="flex items-center gap-4 text-primary">
+                <div class="size-6 bg-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-black text-sm">terminal</span>
+                </div>
+                <h2 class="text-xl font-bold leading-tight tracking-widest uppercase italic glow-text">
+                    NETRUNNER_PROTOCOLS_v2.0</h2>
+            </div>
+            <div class="flex flex-1 justify-end gap-8 items-center">
+                <nav class="hidden md:flex items-center gap-6">
+                    <a class="text-slate-100 text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase border-b-2 border-transparent hover:border-primary"
+                        href="#profile">[ PROFILE ]</a>
+                    <a class="text-slate-400 text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase border-b-2 border-transparent hover:border-primary"
+                        href="#skills">[ NEURAL_IMPLANTS ]</a>
+                    <a class="text-slate-400 text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase border-b-2 border-transparent hover:border-primary"
+                        href="#projects">[ DATA_SHARDS ]</a>
+                    <a class="text-neon-magenta text-xs font-bold tracking-widest hover:text-primary transition-colors uppercase"
+                        href="#uplink">[ UPLINK ]</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="flex-1 flex flex-col items-center px-4 lg:px-20 py-10 max-w-[1600px] mx-auto w-full">
+            {% if messages %}
+            <div class="w-full mt-4 mb-4 z-50">
+                {% for message in messages %}
+                <div
+                    class="p-4 border-l-4 {% if message.tags == 'success' %}border-neon-cyan bg-neon-cyan/20 text-neon-cyan{% else %}border-neon-magenta bg-neon-magenta/20 text-neon-magenta{% endif %} uppercase tracking-widest text-xs font-bold shadow-[0_0_15px_rgba(0,243,255,0.2)]">
+                    // {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="p-6 border-t-2 border-primary/20 bg-background-dark text-white/40">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 max-w-[1600px] mx-auto w-full">
+                <div class="text-[10px] font-mono tracking-widest uppercase">
+                    © 2077 V_CIRODEV // ALL RIGHTS RESERVED // PROPERTY OF MILITECH
+                </div>
+                <div class="flex gap-8">
+                    <a class="text-[10px] font-black uppercase hover:text-primary transition-colors" href="#">Github</a>
+                    <a class="text-[10px] font-black uppercase hover:text-primary transition-colors"
+                        href="#">Neural_Net</a>
+                    <a class="text-[10px] font-black uppercase hover:text-primary transition-colors"
+                        href="#">Encrypt_Mail</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

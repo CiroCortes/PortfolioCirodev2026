@@ -1,0 +1,53 @@
+# ── Entorno virtual ──────────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── Variables de entorno (NUNCA subir al repo) ───────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Archivos compilados de Python ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# ── Django ────────────────────────────────────────────────────────────────────
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos estáticos generados por collectstatic (se generan en Render)
+staticfiles/
+
+# Archivos de media subidos por usuarios
+media/
+
+# ── Sistema operativo ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs y editores ───────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Distribución / empaquetado ────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+.eggs/
+*.egg
+
+# ── Tests y cobertura ─────────────────────────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
